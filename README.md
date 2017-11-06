@@ -1,27 +1,35 @@
 # Mtgrpg
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
+Magic: the Gathering Role Playing Game Client
+
+Client for maintaining game state, tracking progress, etc.
+
+### Copyright info
+
+Magic: the Gathering is property of Wizards of the Coast.  Any use of Magic: the Gather art, terms, or lore should fall under Fair Use policy.
+
+MTG RPG not intended to be a commercial product, just a fan-made game which uses Magic: the Gathering cards as a core game mechanic.
+
+## Development Status
+
+VERY EARLY! This is not by any means a working Client at the moment.
+
+Development of backend server has not yet been started.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+If you want to run this yourself, you will need to create an Auth0 Client
+Once you create an Auth0 Client, add the info to a file named:
+src/app/auth/auth0-variables.ts
+using template:
+src/app/auth/auth0-variables-example.ts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Notes
 
-## Build
+Tests not actually implemented.  Don't bother running ng test
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Interested in learning about MTG RPG?
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+More info about rules/setup will be coming soon.  
