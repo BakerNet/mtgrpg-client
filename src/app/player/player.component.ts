@@ -1,3 +1,5 @@
+import { Player } from '../shared/player.model';
+import { PlayGameService } from '../shared/play-game.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
+  player: Player;
 
-  constructor() { }
+  constructor(private play: PlayGameService) { }
 
   ngOnInit() {
+    this.player = this.play.getSelectedPlayer();
   }
-
 }

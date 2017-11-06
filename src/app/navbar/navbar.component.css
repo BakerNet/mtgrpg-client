@@ -1,0 +1,13 @@
+.right-nav{
+    display: table-row;
+}
+.right-nav-item{
+    display: table-cell;
+}
+.right-nav-profile{
+    display: table-cell;
+    padding-right: 20px;
+}
+.navbar-right{
+    display: inline-block;
+}

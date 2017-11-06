@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Select Your Game or Player</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>GM Games</h3>
+        <div *ngFor="let game of myGames; let i = index"
+          (click)="onGameSelect(i)" 
+          [ngClass]="{'selected': selectedMode === 'gamemaster' && selectedIndex === i}">
+          <app-gm-card [game]="game"></app-gm-card>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3>Player Games</h3>
+        <div *ngFor="let player of myPlayers; let i = index"
+          (click)="onPlayerSelect(i)" 
+          [ngClass]="{'selected': selectedMode === 'player' && selectedIndex === i}">
+          <app-player-card [player]="player"></app-player-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

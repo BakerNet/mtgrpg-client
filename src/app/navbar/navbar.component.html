@@ -1,3 +1,35 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">MTG RPG</a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" [ngSwitch]="mode">
+    <app-game-nav *ngSwitchCase="'player'" mode="player"></app-game-nav>
+    <app-game-nav *ngSwitchCase="'gamemaster'" mode="gamemaster"></app-game-nav>
+    <app-home-nav *ngSwitchCase="'home'" mode="home"></app-home-nav>
+    <app-welcome-nav *ngSwitchDefault ></app-welcome-nav>
+  </div>
+
+  <div class="navbar-right">
+    <ul class="navbar-nav right-nav">
+      <li *ngIf="isLoggedIn" class="nav-item right-nav-profile">
+          <a routerLink="/home/profile" class="nav-link">Profile</a>
+      </li>
+      <li *ngIf="isLoggedIn" class="nav-item right-nav-item">
+          <a class="nav-link">
+            <button type="button" class="btn" (click)="onLogout()">Log Out</button>
+          </a>       
+      </li>
+      <li *ngIf="!isLoggedIn" class="nav-item right-nav-item">
+          <a class="nav-link">
+            <button type="button" class="btn" (click)="onLogin()">Log In</button>
+          </a>       
+      </li>
+      
+    </ul>
+  </div>
+</nav>
