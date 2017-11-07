@@ -21,7 +21,9 @@ export class Player {
     userID: string;
     index: number;
     name: string;
+    level: number;
     age: number;
+    gender: string;
     race: string;
     inventory: Array<Item>;
     equipped: Character;
@@ -36,6 +38,8 @@ export class Player {
         this.userID = userID;
         this.index = index;
         this.name = player['name'];
+        this.level = player['level'] || 1;
+        this.gender = player['gender'];
         this.age = player['age'];
         this.race = player['race'];
         this.inventory = player['inventory'] || new Array();

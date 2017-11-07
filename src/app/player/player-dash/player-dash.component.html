@@ -1,4 +1,181 @@
-<h3>Player Dashboard</h3>
-<pre>
-  {{JSON.stringify(player, null, 2)}}
-</pre>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row"><h3>Player Dashboard</h3></div>
+    <div class="row sec">
+      <div class="col-md-4 sec">
+        <label>Character Name:</label>
+        <span>{{player.name}}</span>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+        <div class="col-6 sec">
+          <label >Race:</label>
+          <span>{{player.race}}</span>
+        </div>
+        <div class="col-6 sec">
+          <label >Gender:</label>
+          <span>{{player.gender}}</span>
+        </div>
+        </div>        
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+        <div class="col-6 sec">
+          <label >Age:</label>
+          <span>{{player.age}}</span>
+        </div>
+        <div class="col-6 sec">
+          <label >Level:</label>
+          <span>{{player.level}}</span>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 sec">
+        <div class="row">
+          <div class="col-md-12 sec">
+            <div class="row">
+              <div class="col-6">
+                <span>Current XP: </span>
+              </div>
+              <div class="col-6">
+                  <div class="rect-mini sec"><div class="content-mini">{{'XP'}}</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 sec">
+            <div class="table">
+                <label class="t-row">Primary Stats</label>
+                <hr>
+                <div class="t-row">
+                  <span class="t-cell">Vitality: </span><span class="t-cell">{{player.stats.primary.vitality}}</span>
+                </div>
+                <div class="t-row">
+                  <span class="t-cell">Strength: </span><span class="t-cell">{{player.stats.primary.strength}}</span>
+                </div>
+                <div class="t-row">
+                  <span class="t-cell">Agility: </span><span class="t-cell">{{player.stats.primary.agility}}</span>
+                </div>
+                <div class="t-row">
+                  <span class="t-cell">Intelligence: </span><span class="t-cell">{{player.stats.primary.intelligence}}</span>
+                </div>
+            </div>
+          </div>
+          <div class="col-6 sec">
+            <div class="table">
+              <label class="t-row">Secondary Stats</label>
+              <hr>
+              <div class="t-row">
+                <span class="t-cell">Charm: </span><span class="t-cell">{{player.stats.secondary.charm}}</span>
+              </div>
+              <div class="t-row">
+                <span class="t-cell">Bravery: </span><span class="t-cell">{{player.stats.secondary.bravery}}</span>
+              </div>
+              <div class="t-row">
+                <span class="t-cell">Perception: </span><span class="t-cell">{{player.stats.secondary.perception}}</span>
+              </div>
+              <div class="t-row">
+                <span class="t-cell">Wisdom: </span><span class="t-cell">{{player.stats.secondary.wisdom}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-7">
+            <div class="row">
+              <div class="col-6">
+                <div class="square sec"><div class="content">{{'HP'}}</div></div>
+                <span>Current HP</span>
+              </div>
+              <div class="col-6">
+                <div class="square sec"><div class="content">{{'AP'}}</div></div>
+                <span>Current AP</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="square sec">
+                  <div class="content">
+                    <span *ngFor="let effect of player.effects">{{effect.name}}</span>
+                  </div>
+                </div>
+                <span>Buffs and Ailments</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="rect-big sec">
+              <div class="content">
+                <span *ngFor="let ability of player.abilities">{{ability.name}}</span>
+              </div>
+            </div>
+            <span>Skills and Abilities</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 sec">
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <div class="square sec">
+              <div class="content">
+
+              </div>
+            </div>
+            <span>Head</span>
+          </div>
+          <div class="col-4">
+            <div class="square sec">
+              <div class="content">
+
+              </div>
+            </div>
+            <span>Trinket</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="rect-big sec">
+              <div class="content">
+
+              </div>
+            </div>
+            <span>Mainhand</span>
+          </div>
+          <div class="col-4">
+            <div class="rect-big sec">
+              <div class="content">
+
+              </div>
+            </div>
+            <span>Body</span>
+          </div>
+          <div class="col-4">
+            <div class="rect-big sec">
+              <div class="content">
+
+              </div>
+            </div>
+            <span>Offhand</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <div class="square sec">
+              <div class="content">
+
+              </div>
+            </div>
+            <span>Boots</span>
+          </div>
+          <div class="col-4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

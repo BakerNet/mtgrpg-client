@@ -6,9 +6,10 @@ import { Player } from './player.model';
 
 var placeholder = new Game("test", "fakename");
 var player1 = new Player({
-  name: "hans",
+  name: "Hans, the Great",
   age: 26,
   race: "human",
+  gender: "male",
   inventory: [],
   equipped: new Character({}),
   vitality: 20,

@@ -27,6 +27,7 @@ import { CallbackComponent } from './auth/callback/callback.component';
 import { ProfileComponent } from './home/profile/profile.component';
 import { PlayerCardComponent } from './home/home-dash/player-card/player-card.component';
 import { GmCardComponent } from './home/home-dash/gm-card/gm-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { GmCardComponent } from './home/home-dash/gm-card/gm-card.component';
     CallbackComponent,
     ProfileComponent,
     PlayerCardComponent,
-    GmCardComponent
+    GmCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
