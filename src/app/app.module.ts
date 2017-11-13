@@ -1,11 +1,15 @@
-import { PlayGameService } from './shared/play-game.service';
-import { GameApiService } from './shared/game-api.service';
-import { LoginService } from './login.service';
-import { BrowserModule } from '@angular/platform-browser';
+// CORE IMPORTS
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+// VENDOR IMPORTS
 
+// SERVICES
+import { PlayGameService } from './shared/play-game.service';
+import { AuthService } from './auth/auth.service';
+import { GameApiService } from './shared/game-api.service';
+// ROUTING
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
+// COMPONENTS
 import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
 import { GamemasterComponent } from './gamemaster/gamemaster.component';
@@ -28,6 +32,7 @@ import { ProfileComponent } from './home/profile/profile.component';
 import { PlayerCardComponent } from './home/home-dash/player-card/player-card.component';
 import { GmCardComponent } from './home/home-dash/gm-card/gm-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { PlayerControlComponent } from './gamemaster/gm-dash/player-control/player-control.component';
 
 @NgModule({
   declarations: [
@@ -52,14 +57,15 @@ import { FooterComponent } from './footer/footer.component';
     ProfileComponent,
     PlayerCardComponent,
     GmCardComponent,
-    FooterComponent
+    FooterComponent,
+    PlayerControlComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [
-    LoginService,
+    AuthService,
     GameApiService,
     PlayGameService
   ],

@@ -1,0 +1,72 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Player: {{player.name}}</h4>
+    <div class="card-text">
+      <div class="row">
+        <div class="col-4">
+          <span>Player Level: {{player.level}}</span>
+        </div>
+        <div class="col-4">
+          <span>Current XP: {{player.currXP}}</span>
+        </div>
+        <div class="col-4">
+          <span>Additional Info: {{'TODO'}}</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#xpModal"
+      (click)="pauseUpdates()">Add XP</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itemModal"
+    (click)="pauseUpdates()">Add Item</button>
+    <!-- Button trigger modal -->
+
+
+  </div>
+</div>
+
+<!-- XP Modal -->
+<div class="modal" id="xpModal" tabindex="-1" role="dialog" aria-labelledby="xpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="xpModalLabel">Add XP to player: {{player.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="xp-amount">XP Amount:</label>
+          <input name="xp-amount" type="number" value=0 #xpAmount>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="onAddXP(xpAmount.value)" data-dismiss="modal">Send XP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- XP Modal -->
+<div class="modal" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="itemModalLabel">Add Item for player: {{player.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="item-select" >Item Template:</label>
+          <select name="item-select" id="" #itemSel>
+            <option *ngFor="let item of itemTemplates" [value]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="onAddItem(itemSel.value)" data-dismiss="modal">Send Item</button>
+        </div>
+      </div>
+    </div>
+  </div>

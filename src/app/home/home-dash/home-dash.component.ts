@@ -1,6 +1,6 @@
 import { PlayGameService } from '../../shared/play-game.service';
 import { User } from '../../shared/user.model';
-import { LoginService } from '../../login.service';
+import { AuthService } from '../../auth/auth.service';
 import { Player } from '../../shared/player.model';
 import { Game } from '../../shared/game.model';
 import { GameApiService } from '../../shared/game-api.service';
@@ -20,11 +20,11 @@ export class HomeDashComponent implements OnInit {
 
   constructor(
     private api: GameApiService, 
-    private loginService: LoginService, 
+    private auth: AuthService, 
     private play: PlayGameService) { }
 
   ngOnInit() {
-    this.loginService.getProfile().then(
+    this.auth.getProfile().then(
       (user) => {
         this.user = user;
         this.myGames = this.api.getGameMasterGames(user.name);

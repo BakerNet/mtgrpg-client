@@ -1,3 +1,4 @@
+import { Item } from './item.model';
 import { Router } from '@angular/router';
 import { Game } from './game.model';
 import { Player } from './player.model';
@@ -9,6 +10,7 @@ export class PlayGameService {
   private selectedMode: string;
   private selectedGame: Game;
   private selectedPlayer: Player;
+  private itemTemplates: Array<any>;
 
   constructor(private api: GameApiService, private router: Router) { }
 
@@ -52,6 +54,10 @@ export class PlayGameService {
     this.router.navigate(['/home']);
   }
 
+  getItemTemplates(){
+    return this.api.getItemTemplates()
+  }
+
   clearStoredData(){
     this.selectedMode = null;
     this.selectedPlayer = null;
@@ -68,6 +74,14 @@ export class PlayGameService {
   updateGame(game: Game){
     localStorage.setItem('selectedPlayer', JSON.stringify(game));
     this.api.updateGameData(game);
+  }
+
+  getPlayerUpdates(player: Player){
+    return this.api.getPlayerUpdates(player);
+  }
+
+  getGameUpdates(game: Game){
+    return this.api.getGameUpdates(game);
   }
 
 }

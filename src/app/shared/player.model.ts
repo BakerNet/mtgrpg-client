@@ -22,6 +22,7 @@ export class Player {
     index: number;
     name: string;
     level: number;
+    currXP: number;
     age: number;
     gender: string;
     race: string;
@@ -39,6 +40,7 @@ export class Player {
         this.index = index;
         this.name = player['name'];
         this.level = player['level'] || 1;
+        this.currXP = player['currXP'];
         this.gender = player['gender'];
         this.age = player['age'];
         this.race = player['race'];

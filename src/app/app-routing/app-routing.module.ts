@@ -7,8 +7,8 @@ import { GmDashComponent } from '../gamemaster/gm-dash/gm-dash.component';
 import { GameRulesComponent } from '../shared/game-rules/game-rules.component';
 import { PlayerNotesComponent } from '../player/player-notes/player-notes.component';
 import { PlayerDashComponent } from '../player/player-dash/player-dash.component';
-import { HomeRedirectService } from '../home-redirect.service';
-import { AuthGuardService } from '../auth-guard.service';
+import { HomeRedirectService } from './home-redirect.service';
+import { AuthGuardService } from './auth-guard.service';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 

@@ -2,12 +2,13 @@
   <div class="col-md-12">
     <div class="row"><h3>Player Dashboard</h3></div>
     <div class="row sec">
+    <!-- Basic Player Data -->
       <div class="col-md-4 sec">
         <label>Character Name:</label>
         <span>{{player.name}}</span>
       </div>
       <div class="col-md-4">
-        <div class="row">
+        <div class="row sec-row">
         <div class="col-6 sec">
           <label >Race:</label>
           <span>{{player.race}}</span>
@@ -19,20 +20,27 @@
         </div>        
       </div>
       <div class="col-md-4">
-        <div class="row">
+        <div class="row sec-row">
         <div class="col-6 sec">
           <label >Age:</label>
           <span>{{player.age}}</span>
         </div>
         <div class="col-6 sec">
           <label >Level:</label>
-          <span>{{player.level}}</span>
+          <span>
+            {{player.level}}
+            <button [ngClass]="{ 'invis': ((this.player.currXP / this.player.level) < 200) }" class="btn btn-sm btn-success"
+              (click)="startLevelUp()">Lvl Up</button>
+          </span>
         </div>
         </div>
       </div>
     </div>
+
+
     <div class="row">
-      <div class="col-md-6 sec">
+      <div class="col-md-6 d-flex flex-column sec">
+    <!-- Main Player State -->
         <div class="row">
           <div class="col-md-12 sec">
             <div class="row">
@@ -40,7 +48,7 @@
                 <span>Current XP: </span>
               </div>
               <div class="col-6">
-                  <div class="rect-mini sec"><div class="content-mini">{{'XP'}}</div></div>
+                  <div class="rect-mini sec"><div class="content-mini">{{this.player.currXP}}</div></div>
               </div>
             </div>
           </div>
@@ -51,16 +59,29 @@
                 <label class="t-row">Primary Stats</label>
                 <hr>
                 <div class="t-row">
-                  <span class="t-cell">Vitality: </span><span class="t-cell">{{player.stats.primary.vitality}}</span>
+                  <span class="t-cell">
+                    <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                      (click)="updateStat('primary', 'vitality')">+</button>
+                    Vitality: </span><span class="t-cell">{{player.stats.primary.vitality}}
+                  </span>
                 </div>
                 <div class="t-row">
-                  <span class="t-cell">Strength: </span><span class="t-cell">{{player.stats.primary.strength}}</span>
+                  <span class="t-cell">
+                      <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                        (click)="updateStat('primary', 'strength')">+</button>
+                      Strength: </span><span class="t-cell">{{player.stats.primary.strength}}</span>
                 </div>
                 <div class="t-row">
-                  <span class="t-cell">Agility: </span><span class="t-cell">{{player.stats.primary.agility}}</span>
+                  <span class="t-cell">
+                      <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                        (click)="updateStat('primary', 'agility')">+</button>
+                      Agility: </span><span class="t-cell">{{player.stats.primary.agility}}</span>
                 </div>
                 <div class="t-row">
-                  <span class="t-cell">Intelligence: </span><span class="t-cell">{{player.stats.primary.intelligence}}</span>
+                  <span class="t-cell">
+                      <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                        (click)="updateStat('primary', 'intelligence')">+</button>
+                      Intelligence: </span><span class="t-cell">{{player.stats.primary.intelligence}}</span>
                 </div>
             </div>
           </div>
@@ -69,21 +90,42 @@
               <label class="t-row">Secondary Stats</label>
               <hr>
               <div class="t-row">
-                <span class="t-cell">Charm: </span><span class="t-cell">{{player.stats.secondary.charm}}</span>
+                <span class="t-cell">
+                    <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                      (click)="updateStat('secondary', 'charm')">+</button>
+                    Charm: </span><span class="t-cell">{{player.stats.secondary.charm}}</span>
               </div>
               <div class="t-row">
-                <span class="t-cell">Bravery: </span><span class="t-cell">{{player.stats.secondary.bravery}}</span>
+                <span class="t-cell">
+                    <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                      (click)="updateStat('secondary', 'bravery')">+</button>
+                    Bravery: </span><span class="t-cell">{{player.stats.secondary.bravery}}</span>
               </div>
               <div class="t-row">
-                <span class="t-cell">Perception: </span><span class="t-cell">{{player.stats.secondary.perception}}</span>
+                <span class="t-cell">
+                    <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                      (click)="updateStat('secondary', 'perception')">+</button>
+                    Perception: </span><span class="t-cell">{{player.stats.secondary.perception}}</span>
               </div>
               <div class="t-row">
-                <span class="t-cell">Wisdom: </span><span class="t-cell">{{player.stats.secondary.wisdom}}</span>
+                <span class="t-cell">
+                    <button [ngClass]="{ 'invis': (this.availableStats === 0) }" class="btn btn-sm btn-success"
+                      (click)="updateStat('secondary', 'wisdom')">+</button>
+                    Wisdom: </span><span class="t-cell">{{player.stats.secondary.wisdom}}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row sec" [ngClass]="{ 'invis': (this.lvlUp === false) }">
+          <div class="col-12"><h4>Save Level Up</h4></div>
+          <div class="col-6">
+            <button class="btn btn-success" (click)="saveLevelUp()">Save</button>
+          </div>
+          <div class="col-6">
+              <button class="btn btn-danger" (click)="cancelLevelUp()">Cancel</button>
+          </div>
+        </div>
+        <div class="row d-flex fill sec">
           <div class="col-sm-7">
             <div class="row">
               <div class="col-6">
@@ -116,6 +158,8 @@
           </div>
         </div>
       </div>
+
+    <!-- Character Equipment -->
       <div class="col-md-6 sec">
         <div class="row">
           <div class="col-4"></div>

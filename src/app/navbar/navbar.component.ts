@@ -2,7 +2,7 @@ import { ActivatedRoute, NavigationEnd, Router, UrlSegment } from '@angular/rout
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/filter';
 
-import { LoginService } from '../login.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,8 +13,8 @@ export class NavbarComponent implements OnInit {
   mode: UrlSegment;
   isLoggedIn: boolean;
 
-  constructor(private loginService: LoginService, private router: Router) { 
-    this.loginService.handleAuthentication();
+  constructor(private auth: AuthService, private router: Router) { 
+    this.auth.handleAuthentication();
   }
 
   ngOnInit() {
@@ -22,21 +22,21 @@ export class NavbarComponent implements OnInit {
     .subscribe(
       (event) => this.mode = event['url'].split('/')[1]
     )
-    this.loginService.profileChange.subscribe(
-      () => this.isLoggedIn = this.loginService.isAuthenticated()
+    this.auth.profileChange.subscribe(
+      () => this.isLoggedIn = this.auth.isAuthenticated()
     )
-    this.isLoggedIn = this.loginService.isAuthenticated();
+    this.isLoggedIn = this.auth.isAuthenticated();
   }
     
   ngOnDestroy(){
-    this.loginService.profileChange.unsubscribe();
+    this.auth.profileChange.unsubscribe();
   }
 
   onLogin(){
-    this.loginService.login();
+    this.auth.login();
   }
 
   onLogout(){
-    this.loginService.logout();
+    this.auth.logout();
   }
 }

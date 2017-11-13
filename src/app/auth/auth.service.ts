@@ -2,13 +2,13 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 
-import { User } from './shared/user.model';
+import { User } from '../shared/user.model';
 
-import { AUTH_CONFIG } from './auth/auth0-variables';
+import { AUTH_CONFIG } from './auth0-variables';
 import auth0 from 'auth0-js';
 
 @Injectable()
-export class LoginService {
+export class AuthService {
   profileChange: Subject<any> = new Subject();
   user: User;
   

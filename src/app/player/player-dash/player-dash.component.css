@@ -57,3 +57,15 @@ span{
     text-align: center;
     border-radius: 5px;
 }
+.invis{
+    display: none;
+}
+.btn{
+    margin-bottom: 10px;
+}
+.sec-row{
+    height: 100%;
+}
+.fill{
+    flex: 1;
+}

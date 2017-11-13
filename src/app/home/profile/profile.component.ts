@@ -1,5 +1,5 @@
 import { User } from '../../shared/user.model';
-import { LoginService } from '../../login.service';
+import { AuthService } from '../../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,12 +12,12 @@ export class ProfileComponent implements OnInit {
   message: string = "This shouldn't show up";
   JSON;
 
-  constructor(private loginService: LoginService) { 
+  constructor(private auth: AuthService) { 
     this.JSON = JSON
   }
 
   ngOnInit() {
-    this.loginService.getProfile()
+    this.auth.getProfile()
     .then((user) => {
       this.user = user
     } )
