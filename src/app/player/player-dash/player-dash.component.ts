@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { PlayGameService } from '../../shared/play-game.service';
 import { Player } from '../../shared/player.model';

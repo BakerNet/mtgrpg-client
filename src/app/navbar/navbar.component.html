@@ -16,17 +16,17 @@
 
   <div class="navbar-right">
     <ul class="navbar-nav right-nav">
-      <li *ngIf="isLoggedIn" class="nav-item right-nav-profile">
+      <li *ngIf="auth.loggedIn" class="nav-item right-nav-profile">
           <a routerLink="/home/profile" class="nav-link">Profile</a>
       </li>
-      <li *ngIf="isLoggedIn" class="nav-item right-nav-item">
+      <li *ngIf="auth.loggedIn" class="nav-item right-nav-item">
           <a class="nav-link">
-            <button type="button" class="btn" (click)="onLogout()">Log Out</button>
+            <button type="button" class="btn" (click)="auth.logout()">Log Out</button>
           </a>       
       </li>
-      <li *ngIf="!isLoggedIn" class="nav-item right-nav-item">
+      <li *ngIf="!auth.loggedIn" class="nav-item right-nav-item">
           <a class="nav-link">
-            <button type="button" class="btn" (click)="onLogin()">Log In</button>
+            <button type="button" class="btn" (click)="auth.login()">Log In</button>
           </a>       
       </li>
       

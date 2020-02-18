@@ -1,10 +1,10 @@
-import { PlayGameService } from '../../shared/play-game.service';
-import { User } from '../../shared/user.model';
-import { AuthService } from '../../auth/auth.service';
-import { Player } from '../../shared/player.model';
-import { Game } from '../../shared/game.model';
-import { GameApiService } from '../../shared/game-api.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
+import { GameApiService } from '../../shared/game-api.service';
+import { Game } from '../../shared/game.model';
+import { PlayGameService } from '../../shared/play-game.service';
+import { Player } from '../../shared/player.model';
+import { User } from '../../shared/user.model';
 
 @Component({
   selector: 'app-home-dash',
@@ -24,7 +24,7 @@ export class HomeDashComponent implements OnInit {
     private play: PlayGameService) { }
 
   ngOnInit() {
-    this.auth.getProfile().then(
+    this.auth.userProfile$.subscribe(
       (user) => {
         this.user = user;
         this.myGames = this.api.getGameMasterGames(user.name);

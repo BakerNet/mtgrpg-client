@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HomeNavComponent implements OnInit {
   @Input() mode: string;
 
-  constructor(private play: PlayGameService) { }
+  constructor(public play: PlayGameService) { }
 
   ngOnInit() {
   }

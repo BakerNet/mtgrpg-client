@@ -1,5 +1,5 @@
-import { ObservableInput } from 'rxjs/Observable';
-import { Observable } from 'rxjs/Rx';
+import { ObservableInput, Observable, interval } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 import { Character } from './character.model';
 import { Injectable } from '@angular/core';
 
@@ -82,13 +82,12 @@ export class GameApiService {
   }
 
   getPlayerUpdates(player: Player){
-    return Observable.interval(5000)
-      .startWith(0)
-      .map(() => {
-        if (player.name === player1.name) return player1
-        if (player.name === player2.name) return player2
-        return null;
-      })
+    return interval(5000)
+      .pipe(startWith(0), map(() => {
+          if (player.name === player1.name) return player1
+          if (player.name === player2.name) return player2
+          return null;
+      }))
   }
 
   updateGameData(game: Game){
